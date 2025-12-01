@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>データ一覧</title>
+	<style>
+		table { border-collapse: collapse; width: 100%; max-width: 1000px; }
+		th, td { border: 1px solid #ddd; padding: 8px; }
+		th { background: #f4f4f4; }
+		body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding: 20px; }
+		h1 { margin-top: 32px; }
+	</style>
+</head>
+<body>
+	{% if error %}
+	<p style="color: red;">DB 接続エラー: {{ error }}</p>
+	{% endif %}
+
+	<h1>Problems</h1>
+	{% if problems and problems|length > 0 %}
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Level</th>
+				<th>Created At</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in problems %}
+			<tr>
+				<td>{{ p.id }}</td>
+				<td>{{ p.title }}</td>
+				<td>{{ p.description }}</td>
+				<td>{{ p.level }}</td>
+				<td>{{ p.created_at }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	<p>Problems テーブルのデータがありません。</p>
+	{% endif %}
+
+	<h1>Users</h1>
+	{% if users and users|length > 0 %}
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Created At</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for u in users %}
+			<tr>
+				<td>{{ u.id }}</td>
+				<td>{{ u.username }}</td>
+				<td>{{ u.email }}</td>
+				<td>{{ u.created_at }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	<p>Users テーブルのデータがありません。</p>
+	{% endif %}
+
+</body>
+</html>
