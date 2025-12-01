@@ -54,7 +54,7 @@ def index():
         with get_conn() as conn:
             with conn.cursor() as cur:
                 cur.execute(
-                    "SELECT id, category_id, question_text, audio_path, difficulty,created_at FROM quiz_questions"
+                    "SELECT id, category_id, question_text, audio_path, difficulty, created_at FROM quiz_questions"
                 )
                 quiz_questions = cur.fetchall()
                 cur.execute(
@@ -73,7 +73,7 @@ def index():
                 except Exception:
                     r["created_at"] = str(ca)
 
-    normalize(problems)
+    normalize(quiz_questions)
     normalize(users)
 
     return render_template("index.html", problems=quiz_questions, users=users, error=error)

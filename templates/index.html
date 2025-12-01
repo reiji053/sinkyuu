@@ -17,8 +17,8 @@
 	<p style="color: red;">DB 接続エラー: {{ error }}</p>
 	{% endif %}
 
-	<h1>Problems</h1>
-	{% if problems and problems|length > 0 %}
+	<h1>問題</h1>
+	{% if quiz_questions and quiz_questions|length > 0 %}
 	<table>
 		<thead>
 			<tr>
@@ -30,14 +30,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for p in problems %}
+			{% for p in quiz_questions %}
 			<tr>
 				<td>{{ p.id }}</td>
-				<td>{{ p.title }}</td>
-				<td>{{ p.description }}</td>
-				<td>{{ p.level }}</td>
-				<td>{{ p.created_at }}</td>
-			</tr>
+				<td>{{ p.category_id }}</td>
+				<td>{{ p.question_text }}</td>
+				<td>{{ p.audio_path }}</td>
+				<td>{{ p.difficulty }}</td>
+				<td>{{ p.created_at }}</td>			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
