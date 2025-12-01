@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>問題フォーム</title>
+    <style>
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding: 20px; }
+        label { display:block; margin-top:8px }
+        input, textarea { width:100%; max-width:700px; }
+        .actions { margin-top:16px }
+    </style>
+</head>
+<body>
+    <h1>{% if quiz %}問題を編集{% else %}新しい問題を作成{% endif %}</h1>
+    <form method="post">
+        <label>Category ID
+            <input type="number" name="category_id" value="{{ quiz.category_id if quiz }}">
+        </label>
+        <label>Question Text
+            <textarea name="question_text" rows="4">{{ quiz.question_text if quiz }}</textarea>
+        </label>
+        <label>Audio Path
+            <input type="text" name="audio_path" value="{{ quiz.audio_path if quiz }}">
+        </label>
+        <label>Difficulty
+            <input type="text" name="difficulty" value="{{ quiz.difficulty if quiz }}">
+        </label>
+        <div class="actions">
+            <button type="submit">保存</button>
+            <a href="{{ url_for('index') }}">キャンセル</a>
+        </div>
+    </form>
+</body>
+</html>

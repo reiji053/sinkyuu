@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ユーザーフォーム</title>
+    <style>
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding: 20px; }
+        label { display:block; margin-top:8px }
+        input { width:100%; max-width:700px; }
+        .actions { margin-top:16px }
+    </style>
+</head>
+<body>
+    <h1>{% if user %}ユーザーを編集{% else %}新しいユーザーを作成{% endif %}</h1>
+    <form method="post">
+        <label>Username
+            <input type="text" name="username" value="{{ user.username if user }}">
+        </label>
+        <label>Email
+            <input type="email" name="email" value="{{ user.email if user }}">
+        </label>
+        <div class="actions">
+            <button type="submit">保存</button>
+            <a href="{{ url_for('index') }}">キャンセル</a>
+        </div>
+    </form>
+</body>
+</html>

@@ -18,6 +18,7 @@
 	{% endif %}
 
 	<h1>問題 (quiz_questions)</h1>
+	<p><a href="{{ url_for('quiz_new') }}">▶ 新しい問題を追加</a></p>
 	{% if quiz_questions and quiz_questions|length > 0 %}
 	<table>
 		<thead>
@@ -27,6 +28,7 @@
 				<th>Question</th>
 				<th>Audio Path</th>
 				<th>Difficulty</th>
+				<th>Actions</th>
 				<th>Created At</th>
 			</tr>
 		</thead>
@@ -38,6 +40,12 @@
 				<td>{{ p.question_text }}</td>
 				<td>{{ p.audio_path }}</td>
 				<td>{{ p.difficulty }}</td>
+				<td>
+					<a href="{{ url_for('quiz_edit', quiz_id=p.id) }}">編集</a>
+					<form method="post" action="{{ url_for('quiz_delete', quiz_id=p.id) }}" style="display:inline" onsubmit="return confirm('本当に削除しますか？');">
+						<button type="submit">削除</button>
+					</form>
+				</td>
 				<td>{{ p.created_at }}</td>
 			</tr>
 			{% endfor %}
