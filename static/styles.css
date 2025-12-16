@@ -1,0 +1,1003 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+
+td,
+th {
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+.color-cell {
+  background-color: rgb(211, 68, 68) !important;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #faf8f2;
+  -webkit-font-smoothing: antialiased;
+}
+
+.title {
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #fffefa;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 8px;
+}
+
+.title img[src*="titletop"] {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  position: fixed;
+  top: 0;
+}
+
+.title-logo {
+  height: 150px;
+  width: auto;
+  max-width: 90%;
+  display: block;
+  margin: 8px auto;
+}
+
+/* 全画面カバーの透明ボタン */
+.invisible-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.title h1 {
+  text-align: center;
+  font-size: clamp(2.25rem, 4vw, 1.8rem);
+  margin: 4px 0;
+  color: #000000;
+  font-weight: 700;
+  padding-top: 320px;
+}
+
+.title h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 1.4rem);
+  margin: 6px 0;
+  color: #000000;
+  font-weight: 700;
+}
+
+/* sign up画面のボタンデザイン */
+.signup h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 80ms ease;
+}
+
+.title h2:hover,
+.signup h2:hover {
+  background-color: #f0f6ff;
+  transform: translateY(-2px);
+}
+
+.title h2 img.h2-icon,
+.signup h2 img.h2-icon {
+  width: 20px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.signup {
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fffefa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.signup h1 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin: 16px 0;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+}
+
+.signup a.btn-link {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+}
+
+.signup h2 {
+  text-align: center;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  margin: 12px 0;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+  border-radius: 50px;
+}
+
+.signup h3 {
+  text-align: center;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  margin: 12px 0;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+}
+
+.signup a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.signup a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 360px) {
+  .title,
+  .signup {
+    padding: 12px;
+  }
+  .title-logo {
+    margin: 12px auto;
+  }
+}
+
+.signin {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 16px;
+  background-color: #fffefa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.signin h1 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin: 16px 0;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+}
+
+.signin input[type="text"],
+.signin input[type="password"] {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  font-weight: bold;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.signin input[type="text"]::placeholder,
+.signin input[type="password"]::placeholder {
+  text-align: left;
+}
+
+.signin form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signin form input[type="text"],
+.signin form input[type="password"],
+.signin form button {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: clamp(1rem, 3vw, 1.1rem);
+}
+
+.signin button {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: auto;
+  min-width: 100px;
+  max-width: 120px;
+  padding: 8px 16px;
+  margin: 0 auto;
+  background: #a4ce00;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 80ms ease;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.signin h3 {
+  text-align: center;
+  font-size: clamp(0.9rem, 3vw, 1.3rem);
+  margin: 12px 0;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+}
+
+.forgot {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 16px;
+  background-color: #fffefa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.forgot h1 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin: 16px 0;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+}
+
+.forgot input[type="email"] {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  font-weight: bold;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.forgot input[type="email"]::placeholder {
+  text-align: left;
+}
+
+.forgot form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.forgot form button {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: clamp(1rem, 3vw, 1.1rem);
+}
+
+.forgot button {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: auto;
+  min-width: 100px;
+  max-width: 120px;
+  padding: 8px 16px;
+  margin: 0 auto;
+  background: #a4ce00;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 80ms ease;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.forgot h3 {
+  text-align: center;
+  font-size: clamp(0.9rem, 3vw, 1.3rem);
+  margin: 12px 0;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+}
+
+.signup_email {
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fffefa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.signup_email h1 {
+  text-align: center;
+  font-size: clamp(1.3rem, 5vw, 2.5rem);
+  margin: 1px 0;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+}
+
+.signup_email h2 {
+  text-align: center;
+  font-size: clamp(0.4rem, 4vw, 1rem);
+  margin: 1px 0;
+  margin-bottom: 16px;
+  color: #000000;
+  font-weight: 300;
+  width: 100%;
+}
+
+/* ===== 入力欄 横幅拡張 ===== */
+.signup_email form {
+  width: 100%;
+  max-width: 440px; /* 入力フォーム全体の横幅 */
+}
+
+/* 入力欄ラッパー */
+.signup_email .input-wrap {
+  width: 100%;
+  max-width: 100%; /* 親の幅をフルに使う */
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* 入力欄本体 */
+.signup_email .input-wrap input {
+  width: 100%;
+  padding: 14px 52px 14px 48px; /* 右=目ボタン／左=アイコン 分の余白 */
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* 左アイコン（画像の比率維持） */
+.signup_email .input-wrap img.icon-left {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  object-fit: contain; /* 画像の縦横比を維持 */
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* 右の目ボタン */
+.signup_email .input-wrap .eye-btn {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 目アイコンの比率固定 */
+.signup_email .input-wrap .eye-btn img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* ===== リンク ===== */
+.signup_email a {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  text-align: right;
+  font-size: 0.9rem;
+  margin-bottom: 9px;
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.signup_email a:hover {
+  text-decoration: underline;
+}
+
+/* ===== ボタン ===== */
+.signup_email button[type="submit"] {
+  width: 100%;
+  max-width: 360px;
+  background-color: #a4ce00;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.signup_email button[type="submit"]:hover {
+  background-color: #a4ce00;
+}
+
+/* Back ボタン */
+.signup_email .back-btn {
+  width: 100%;
+  max-width: 360px;
+  background-color: #ffffff;
+  color: #a4ce00;
+  border: 1px solid #a4ce00;
+  font-weight: bold;
+  border-radius: 999px;
+  padding: 14px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.signup_email .back-btn:hover {
+  background-color: #ffffff;
+}
+
+.difficulty {
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fffefa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.difficulty h1 {
+  text-align: center;
+  font-size: clamp(1rem, 5vw, 2.5rem);
+  margin: 1px 0;
+  margin-bottom: 10px;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+}
+
+/* difficulty ページ用 */
+.difficulty .level-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  padding: 16px;
+  margin: 12px auto;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.difficulty .level-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain; /* 画像の縦横比を維持 */
+  flex-shrink: 0;
+}
+
+/* 右側テキスト全体 */
+.difficulty .level-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 右上のタイトル */
+.difficulty .level-text h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* 右下の説明 */
+.difficulty .level-text h3 {
+  margin: 4px 0 0;
+  font-size: 0.5rem;
+  font-weight: normal;
+  color: #444;
+}
+
+.difficulty button[type="submit"] {
+  width: 100%;
+  max-width: 360px;
+  background-color: #a4ce00;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  margin-top: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.difficulty button[type="submit"]:hover {
+  background-color: #a4ce00;
+}
+
+/* レベル未選択時の Next ボタン（無効） */
+.difficulty .disabled {
+  background-color: #cccccc !important;
+  cursor: not-allowed;
+}
+
+/* レベル選択時のボタン色 */
+.difficulty .level-btn.selected {
+  background-color: #a4ce00;
+  color: white;
+  border-color: #a4ce00;
+}
+
+/* 選択時の文字色 */
+.difficulty .level-btn.selected h2,
+.difficulty .level-btn.selected h3 {
+  color: white;
+}
+
+.frequency {
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fffefa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.frequency h1 {
+  text-align: center;
+  font-size: clamp(1rem, 5vw, 2.5rem);
+  margin: 1px 0;
+  margin-bottom: 10px;
+  color: #000000;
+  font-weight: 700;
+  width: 100%;
+}
+
+.frequency h4 {
+  text-align: center;
+  font-size: clamp(0.5rem, 3vw, 2.5rem);
+  margin: 1px 0;
+  margin-bottom: 10px;
+  color: #000000;
+  width: 100%;
+}
+
+.frequency .level-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  padding: 16px;
+  margin: 12px auto;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.frequency .level-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain; /* 画像の縦横比を維持 */
+  flex-shrink: 0;
+}
+
+/* 右側テキスト全体 */
+.frequency .level-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.frequency .level-text h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.frequency button[type="submit"] {
+  width: 100%;
+  max-width: 360px;
+  background-color: #a4ce00;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  margin-top: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.frequency button[type="submit"]:hover {
+  background-color: #a4ce00;
+}
+
+/* レベル未選択時の Next ボタン（無効） */
+.frequency .disabled {
+  background-color: #cccccc !important;
+  cursor: not-allowed;
+}
+
+/* レベル選択時のボタン色 */
+.frequency .level-btn.selected {
+  background-color: #a4ce00;
+  color: white;
+  border-color: #a4ce00;
+}
+
+/* 選択時の文字色 */
+.frequency.level-btn.selected h2 {
+  color: white;
+}
+
+.ready {
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fffefa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.ready h1 {
+  text-align: center;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin: 1px 0;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  width: 100%;
+}
+
+.ready h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin: 1px 0;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  width: 100%;
+}
+
+.ready img {
+  width: 50px;
+  height: auto;
+  margin: 20px 0;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.ready button {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  padding: 14px 16px;
+  margin: 0 auto;
+  background: #a4ce00;
+  border-radius: 12px;
+  border: 1px solid #000000;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 80ms ease;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.select {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.select h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 16px 0;
+  font-weight: 700;
+  color: #000;
+}
+
+.select button {
+  width: 100%;
+  max-width: 300px;
+  padding: 25px 16px;
+  margin: 12px auto;
+  background: #d8cfc4;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sub-btn-wrapper {
+  width: 100%;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.select .sub-btn {
+  padding: 10px 14px;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 80ms ease;
+}
+
+.sub-btn.easy {
+  background-color: #c6d1a3;
+}
+
+.sub-btn.normal {
+  background-color: #d6c48f;
+}
+
+.sub-btn.difficult {
+  background-color: #d19a9a;
+}
+
+.sub-btn:hover {
+  background: #c9c9c9;
+  transform: translateY(-2px);
+}
+
+.sub-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.06);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #faf8f2;
+  width: 85%;
+  max-width: 260px;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.modal-text {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 14px;
+  color: #000;
+}
+
+.ready-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ready-btn {
+  width: 90px;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.ready-btn.yes {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.ready-btn.no {
+  background: #3498db;
+  color: #fff;
+}
+
+.question {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0px 0;
+  font-weight: 700;
+  color: #000;
+}
+
+.question-box {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #ffffff;
+}
+
+.question-text {
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-weight: bold;
+}
+
+.question-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.question .answer-btn {
+  width: 100%;
+  max-width: 360px;
+  background-color: #b2b2b2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  margin-top: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.question h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+}
+
+.question button[type="submit"] {
+  width: 100%;
+  max-width: 360px;
+  background-color: #a4ce00;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 20px;
+  padding: 14px;
+  margin-top: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.question button[type="submit"]:hover {
+  background-color: #a4ce00;
+}
+
+.question .disabled {
+  background-color: #cccccc !important;
+  cursor: not-allowed;
+}
+
+.question .answer-btn.selected {
+  background-color: #6cb1e9;
+  color: white;
+  border-color: #6cb1e9;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>難易度設定</title>
+    <link rel="stylesheet" href="/static/styles.css?v=2" />
+  </head>
+
+  <body style="background: #f5f6f8">
+    <div class="difficulty" style="background-color: #faf8f2">
+      <h1>How much Japanese do you know?</h1>
+      <a class="level-btn" href="#">
+        <img src="/static/img/titlelogo.png" class="level-icon" />
+        <div class="level-text">
+          <h2>Beginner</h2>
+          <h3>I can't introduce myself and know simple phrases</h3>
+        </div>
+      </a>
+      <a class="level-btn" href="#">
+        <img src="/static/img/titlelogo.png" class="level-icon" />
+        <div class="level-text">
+          <h2>Novice</h2>
+          <h3>
+            I can understand simple sentences and handle basic conversations in
+            familiar stuations
+          </h3>
+        </div>
+      </a>
+      <a class="level-btn" href="#">
+        <img src="/static/img/titlelogo.png" class="level-icon" />
+        <div class="level-text">
+          <h2>Intermediate</h2>
+          <h3>
+            I can hold daily conversations and express my opinions clearly
+          </h3>
+        </div>
+      </a>
+      <a class="level-btn" href="#">
+        <img src="/static/img/difficulty.png" class="level-icon" />
+        <div class="level-text">
+          <h2>Advanced</h2>
+          <h3>
+            I can hold conversations on a wide range of topics and express my
+            opinions confidenty
+          </h3>
+        </div>
+      </a>
+      <button
+        type="submit"
+        id="nextBtn"
+        .
+        onclick="window.location.href='/frequency'"
+        class="disabled"
+        disabled
+      >
+        Next Step
+      </button>
+
+      <script>
+        const levelButtons = document.querySelectorAll(".level-btn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        levelButtons.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // すでに選ばれているものを解除
+            levelButtons.forEach((b) => b.classList.remove("selected"));
+
+            // クリックしたものを選択状態に
+            btn.classList.add("selected");
+
+            // Next ボタンを有効化
+            nextBtn.classList.remove("disabled");
+            nextBtn.disabled = false;
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>

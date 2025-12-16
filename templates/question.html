@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>問題画面</title>
+    <link rel="stylesheet" href="/static/styles.css?v=2" />
+  </head>
+
+  <body>
+    <div class="question" style="background-color: #faf8f2">
+      <h1 class="question-number">Q1</h1>
+
+      <div class="question-box">
+        <p class="question-text">お客様に商品を渡す時、何と言いますか？</p>
+
+        <img
+          src="/static/img/cashier.png"
+          alt="レジ対応のイラスト"
+          class="question-image"
+        />
+      </div>
+      <a class="answer-btn" href="#">
+        <div class="answer-text">
+          <h2>はい、どうぞ</h2>
+        </div>
+      </a>
+      <a class="answer-btn" href="#">
+        <div class="answer-text">
+          <h2>やめてください</h2>
+        </div>
+      </a>
+      <a class="answer-btn" href="#">
+        <div class="answer-text">
+          <h2>だめです</h2>
+        </div>
+      </a>
+      <a class="answer-btn" href="#">
+        <div class="answer-text">
+          <h2>いりません</h2>
+        </div>
+      </a>
+      <button
+        type="submit"
+        id="answerBtn"
+        .
+        onclick=""
+        class="disabled"
+        disabled
+      >
+        Answer
+      </button>
+
+      <script>
+        const levelButtons = document.querySelectorAll(".answer-btn");
+        const nextBtn = document.getElementById("answerBtn");
+        const apiKey = "YOUR_API_KEY";
+        const endpoint = "https://sinkyuu.vercel.app/api/quiz/category/1";
+
+        levelButtons.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // すでに選ばれているものを解除
+            levelButtons.forEach((b) => b.classList.remove("selected"));
+
+            // クリックしたものを選択状態に
+            btn.classList.add("selected");
+
+            answerBtn.classList.remove("disabled");
+            answerBtn.disabled = false;
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>

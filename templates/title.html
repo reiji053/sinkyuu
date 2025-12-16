@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>タイトル</title>
+    <link rel="stylesheet" href="/static/styles.css?v=3" />
+    <style>
+      .invisible-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      .title {
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="title">
+      <img src="/static/img/titletop.png" alt="タイトル上部画像" />
+      <h1>CombiNippon</h1>
+      <img
+        src="/static/img/titlelogo.png"
+        alt="タイトルロゴ"
+        class="title-logo"
+      />
+      <h2>Tap to Start</h2>
+      <button
+        class="invisible-button"
+        onclick="window.location.href='/signup'"
+      ></button>
+    </div>
+  </body>
+</html>

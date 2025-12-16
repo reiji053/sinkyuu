@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>選択画面</title>
+    <link rel="stylesheet" href="/static/styles.css?v=2" />
+  </head>
+
+  <body style="background: #f5f6f8">
+    <div class="select" style="background-color: #faf8f2">
+      <h1>Select a question</h1>
+
+      <button class="main-btn">Cashier service</button>
+      <button class="main-btn">Conversation during stocking</button>
+      <button class="main-btn">Handling complaints</button>
+      <button class="main-btn">Shuffle</button>
+    </div>
+
+    <div id="readyModal" class="modal hidden">
+      <div class="modal-content">
+        <p class="modal-text">Are you ready?</p>
+
+        <div class="ready-btn-wrapper">
+          <button class="ready-btn yes" id="readyYes">Yes</button>
+          <button class="ready-btn no" id="readyNo">No</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const mainButtons = document.querySelectorAll(".main-btn");
+      const modal = document.getElementById("readyModal");
+      const yesBtn = document.getElementById("readyYes");
+      const noBtn = document.getElementById("readyNo");
+
+      let selectedMain = "";
+      let selectedLevel = "";
+
+      mainButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const existing = btn.nextElementSibling;
+          if (existing && existing.classList.contains("sub-btn-wrapper")) {
+            existing.remove();
+            return;
+          }
+
+          const wrapper = document.createElement("div");
+          wrapper.className = "sub-btn-wrapper";
+
+          const levels = ["Easy", "Normal", "Difficult"];
+          selectedMain = btn.textContent;
+
+          levels.forEach((level) => {
+            const subBtn = document.createElement("button");
+            subBtn.className = "sub-btn";
+
+            if (level === "Easy") subBtn.classList.add("easy");
+            if (level === "Normal") subBtn.classList.add("normal");
+            if (level === "Difficult") subBtn.classList.add("difficult");
+
+            subBtn.textContent = level;
+
+            subBtn.addEventListener("click", () => {
+              selectedLevel = level;
+              modal.classList.remove("hidden");
+            });
+
+            wrapper.appendChild(subBtn);
+          });
+
+          btn.after(wrapper);
+        });
+      });
+
+      yesBtn.addEventListener("click", () => {
+        const genre = encodeURIComponent(selectedMain);
+        const level = encodeURIComponent(selectedLevel);
+
+        window.location.href = `/question?genre=${genre}&level=${level}`;
+      });
+
+      noBtn.addEventListener("click", () => {
+        modal.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>

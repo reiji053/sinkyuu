@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>頻度設定</title>
+    <link rel="stylesheet" href="/static/styles.css?v=2" />
+  </head>
+
+  <body style="background: #f5f6f8">
+    <div class="frequency" style="background-color: #faf8f2">
+      <h1>How often do you want to practice Japanese?</h1>
+      <h4>Choose a goal right now, you'll be more likely to achive it!</h4>
+      <a class="level-btn" href="#">
+        <img src="/static/img/frequency1.png" class="level-icon" />
+        <div class="level-text">
+          <h2>A few minutes every day</h2>
+        </div>
+      </a>
+      <a class="level-btn" href="#">
+        <img src="/static/img/frequency2.png" class="level-icon" />
+        <div class="level-text">
+          <h2>A few times each week</h2>
+        </div>
+      </a>
+      <a class="level-btn" href="#">
+        <img src="/static/img/frequency2.png" class="level-icon" />
+        <div class="level-text">
+          <h2>A few times each month</h2>
+        </div>
+      </a>
+      <a class="level-btn" href="#">
+        <img src="/static/img/frequency3.png" class="level-icon" />
+        <div class="level-text">
+          <h2>I can't commit right now</h2>
+        </div>
+      </a>
+      <button
+        type="submit"
+        id="nextBtn"
+        .
+        onclick="window.location.href='/ready'"
+        class="disabled"
+        disabled
+      >
+        Next Step
+      </button>
+
+      <script>
+        const levelButtons = document.querySelectorAll(".level-btn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        levelButtons.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // すでに選ばれているものを解除
+            levelButtons.forEach((b) => b.classList.remove("selected"));
+
+            // クリックしたものを選択状態に
+            btn.classList.add("selected");
+
+            // Next ボタンを有効化
+            nextBtn.classList.remove("disabled");
+            nextBtn.disabled = false;
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>
