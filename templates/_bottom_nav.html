@@ -1,0 +1,41 @@
+{# Bottom navigation: Learn / Profile / Settings #}
+<div class="bottom-nav-spacer" aria-hidden="true"></div>
+<nav class="bottom-nav" aria-label="メインメニュー">
+  <a
+    class="bottom-nav__item {% if request.path in ['/select','/question','/difficulty','/frequency','/ready'] %}is-active{% endif %}"
+    href="/select"
+    aria-label="学習"
+    title="学習"
+  >
+    <svg class="bottom-nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+    </svg>
+  </a>
+
+  <a
+    class="bottom-nav__item {% if request.path == '/profile' %}is-active{% endif %}"
+    href="/profile"
+    aria-label="ユーザー"
+    title="ユーザー"
+  >
+    <svg class="bottom-nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M20 21a8 8 0 0 0-16 0" />
+      <path d="M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" />
+    </svg>
+  </a>
+
+  <a
+    class="bottom-nav__item {% if request.path.startswith('/settings') %}is-active{% endif %}"
+    href="/settings"
+    aria-label="設定"
+    title="設定"
+  >
+    <svg class="bottom-nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 15.5a3.5 3.5 0 1 0-3.5-3.5 3.5 3.5 0 0 0 3.5 3.5z" />
+      <path
+        d="M19.4 15a7.9 7.9 0 0 0 .1-1 7.9 7.9 0 0 0-.1-1l2-1.5-2-3.5-2.4 1a8.1 8.1 0 0 0-1.7-1L15 3h-6l-.3 2.5a8.1 8.1 0 0 0-1.7 1l-2.4-1-2 3.5L4.6 13a7.9 7.9 0 0 0-.1 1 7.9 7.9 0 0 0 .1 1l-2 1.5 2 3.5 2.4-1a8.1 8.1 0 0 0 1.7 1L9 21h6l.3-2.5a8.1 8.1 0 0 0 1.7-1l2.4 1 2-3.5z"
+      />
+    </svg>
+  </a>
+</nav>

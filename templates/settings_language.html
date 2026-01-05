@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Language</title>
+    <link rel="stylesheet" href="/static/styles.css?v=2" />
+  </head>
+
+  <body style="background: #f5f6f8">
+    <div class="settings" style="background-color: #faf8f2">
+      <h1>App Language</h1>
+
+      <form method="post" class="settings-language">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
+
+        {% for lang in languages %}
+        <label class="settings-radio">
+          <input type="radio" name="language" value="{{ lang }}" {% if lang == current %}checked{% endif %} />
+          <span class="settings-radio__label">{{ lang }}</span>
+        </label>
+        {% endfor %}
+
+        <button type="submit" class="settings-save">Save</button>
+      </form>
+    </div>
+
+    {% include "_bottom_nav.html" %}
+  </body>
+</html>

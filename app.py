@@ -732,6 +732,65 @@ def profile():
 
     return render_template("profile.html", user=user, badges=badges)
 
+
+@app.route("/settings")
+def settings():
+    user_id = session.get("user_id")
+    if not user_id:
+        return redirect("/signin")
+    app_language = session.get("app_language") or "English"
+    return render_template("settings.html", app_language=app_language)
+
+
+@app.route("/settings/language", methods=["GET", "POST"])
+def settings_language():
+    user_id = session.get("user_id")
+    if not user_id:
+        return redirect("/signin")
+
+    languages = ["English", "Hindi", "Japanese"]
+    current = session.get("app_language") or "English"
+
+    if request.method == "POST":
+        selected = (request.form.get("language") or "").strip()
+        if selected in languages:
+            session["app_language"] = selected
+        return redirect("/settings")
+
+    return render_template("settings_language.html", languages=languages, current=current)
+
+
+@app.route("/settings/help")
+def settings_help():
+    user_id = session.get("user_id")
+    if not user_id:
+        return redirect("/signin")
+    return render_template("settings_stub.html", title="Help / FAQ")
+
+
+@app.route("/settings/feedback")
+def settings_feedback():
+    user_id = session.get("user_id")
+    if not user_id:
+        return redirect("/signin")
+    return render_template("settings_stub.html", title="Feedback")
+
+
+@app.route("/settings/terms")
+def settings_terms():
+    user_id = session.get("user_id")
+    if not user_id:
+        return redirect("/signin")
+    return render_template("settings_stub.html", title="Terms of Service")
+
+
+@app.route("/settings/privacy")
+def settings_privacy():
+    user_id = session.get("user_id")
+    if not user_id:
+        return redirect("/signin")
+    return render_template("settings_stub.html", title="Privacy Policy")
+
 @app.route("/question", methods=["GET", "POST"])
 def question():
     genre_en = (request.args.get("genre") or "").strip()
@@ -745,7 +804,15 @@ def question():
     genre_filter = None if genre_en.lower() == "shuffle" else genre_en
 
     if reset == "1":
+        # クイズの状態だけリセットしたいが、ログイン状態まで消すと
+        # /profile などで再ログインが必要になってしまうため保持する。
+        preserved_user_id = session.get("user_id")
+        preserved_csrf = session.get("_csrf_token")
         session.clear()
+        if preserved_user_id:
+            session["user_id"] = preserved_user_id
+        if preserved_csrf:
+            session["_csrf_token"] = preserved_csrf
 
     level_map = {
         "Easy": 1,

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>設定</title>
+    <link rel="stylesheet" href="/static/styles.css?v=2" />
+  </head>
+
+  <body style="background: #f5f6f8">
+    <div class="settings" style="background-color: #faf8f2">
+      <h1>Settings</h1>
+
+      <h2 class="settings-section-title">Language</h2>
+      <div class="settings-group">
+        <a class="settings-row" href="/settings/language">
+          <span class="settings-row__left">
+            <svg class="settings-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9z" />
+              <path d="M3.6 9h16.8" />
+              <path d="M3.6 15h16.8" />
+              <path d="M12 3a12 12 0 0 0 0 18" />
+              <path d="M12 3a12 12 0 0 1 0 18" />
+            </svg>
+            <span class="settings-row__label">App Language</span>
+          </span>
+          <span class="settings-row__right">
+            <span class="settings-row__value">{{ app_language }}</span>
+            <svg class="settings-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <h2 class="settings-section-title">Account</h2>
+      <div class="settings-group">
+        <a class="settings-row" href="/profile">
+          <span class="settings-row__left">
+            <svg class="settings-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20 21a8 8 0 0 0-16 0" />
+              <path d="M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" />
+            </svg>
+            <span class="settings-row__label">Profile</span>
+          </span>
+          <span class="settings-row__right">
+            <svg class="settings-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <h2 class="settings-section-title">Support</h2>
+      <div class="settings-group">
+        <a class="settings-row" href="/settings/help">
+          <span class="settings-row__left">
+            <svg class="settings-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+            </svg>
+            <span class="settings-row__label">Help / FAQ</span>
+          </span>
+          <span class="settings-row__right">
+            <svg class="settings-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </span>
+        </a>
+
+        <a class="settings-row" href="/settings/feedback">
+          <span class="settings-row__left">
+            <svg class="settings-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 4h16v16H4z" />
+              <path d="M4 6l8 7 8-7" />
+            </svg>
+            <span class="settings-row__label">Feedback</span>
+          </span>
+          <span class="settings-row__right">
+            <svg class="settings-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <h2 class="settings-section-title">Legal</h2>
+      <div class="settings-group">
+        <a class="settings-row" href="/settings/terms">
+          <span class="settings-row__left">
+            <svg class="settings-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6 2h9l3 3v17H6z" />
+              <path d="M15 2v4h4" />
+              <path d="M9 10h6" />
+              <path d="M9 14h6" />
+            </svg>
+            <span class="settings-row__label">Terms of Service</span>
+          </span>
+          <span class="settings-row__right">
+            <svg class="settings-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </span>
+        </a>
+
+        <a class="settings-row" href="/settings/privacy">
+          <span class="settings-row__left">
+            <svg class="settings-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M7 11V8a5 5 0 0 1 10 0v3" />
+              <path d="M6 11h12v10H6z" />
+            </svg>
+            <span class="settings-row__label">Privacy Policy</span>
+          </span>
+          <span class="settings-row__right">
+            <svg class="settings-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <a class="settings-logout" href="/logout">Logout</a>
+    </div>
+
+    {% include "_bottom_nav.html" %}
+  </body>
+</html>

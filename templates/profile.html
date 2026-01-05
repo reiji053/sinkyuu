@@ -11,68 +11,27 @@
     <div class="select" style="background-color: #faf8f2">
       <h1>Profile</h1>
 
-      <div style="text-align: left; width: 100%; max-width: 360px">
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p>
-          <strong>Name:</strong>
-          {% if user.name %}{{ user.name }}{% else %}(未設定){% endif %}
-        </p>
+      <button type="button" class="profile-menu-item">
+        <span class="profile-menu-text">Cashier service</span>
+        <span class="profile-menu-badge-slot" aria-hidden="true"></span>
+      </button>
 
-        <form method="post" style="margin-top: 12px">
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
-          <label for="name" style="display: block; margin-bottom: 6px"
-            >表示名を変更</label
-          >
-          <input
-            id="name"
-            name="name"
-            type="text"
-            value="{{ user.name or '' }}"
-            placeholder="例）Taro"
-            style="width: 100%; padding: 10px; border-radius: 8px"
-          />
-          <button
-            type="submit"
-            class="answer-submit"
-            style="width: 100%; margin-top: 10px"
-          >
-            Save
-          </button>
-        </form>
+      <button type="button" class="profile-menu-item">
+        <span class="profile-menu-text">Conversation during stocking</span>
+        <span class="profile-menu-badge-slot" aria-hidden="true"></span>
+      </button>
 
-        <hr style="margin: 18px 0" />
+      <button type="button" class="profile-menu-item">
+        <span class="profile-menu-text">Handling complaints</span>
+        <span class="profile-menu-badge-slot" aria-hidden="true"></span>
+      </button>
 
-        <h2 style="margin: 0 0 10px 0">Badges</h2>
-
-        {% if badges and badges|length > 0 %}
-        <div style="display: grid; gap: 10px">
-          {% for b in badges %}
-          <div
-            style="padding: 10px; border: 1px solid #e6e6e6; border-radius: 12px"
-          >
-            <div style="display: flex; gap: 8px; align-items: center">
-              {% if b.earned %}
-              <span class="tag is-success">獲得</span>
-              {% else %}
-              <span class="tag is-light">未獲得</span>
-              {% endif %}
-              <strong>{{ b.name }}</strong>
-            </div>
-            {% if b.description %}
-            <p style="margin-top: 6px">{{ b.description }}</p>
-            {% endif %}
-          </div>
-          {% endfor %}
-        </div>
-        {% else %}
-        <p>まだバッジがありません。</p>
-        {% endif %}
-
-        <div style="margin-top: 18px; display: flex; gap: 10px">
-          <a href="/select" class="answer-submit" style="flex: 1">Back</a>
-          <a href="/logout" class="answer-submit" style="flex: 1">Logout</a>
-        </div>
-      </div>
+      <button type="button" class="profile-menu-item">
+        <span class="profile-menu-text">Shuffle</span>
+        <span class="profile-menu-badge-slot" aria-hidden="true"></span>
+      </button>
     </div>
+
+    {% include "_bottom_nav.html" %}
   </body>
 </html>
