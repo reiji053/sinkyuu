@@ -206,6 +206,7 @@ body {
 }
 
 .signin input[type="text"],
+.signin input[type="email"],
 .signin input[type="password"] {
   border: 1px solid #ccc;
   padding: 10px 12px;
@@ -219,6 +220,7 @@ body {
 }
 
 .signin input[type="text"]::placeholder,
+.signin input[type="email"]::placeholder,
 .signin input[type="password"]::placeholder {
   text-align: left;
 }
@@ -231,6 +233,7 @@ body {
 }
 
 .signin form input[type="text"],
+.signin form input[type="email"],
 .signin form input[type="password"],
 .signin form button {
   width: 100%;
