@@ -435,7 +435,9 @@ def get_db_connection():
 @app.route("/signup-email", methods=["GET", "POST"])
 def signup_email():
     if request.method == "POST":
-        name = (request.form.get("name") or "").strip() or None
+        name = (request.form.get("name") or "").strip()
+        if not name:
+            name = ""
         email = (request.form.get("email") or "").strip().lower()
         password = request.form["password"]
 
@@ -844,7 +846,9 @@ def profile():
         return redirect("/signin")
 
     if request.method == "POST":
-        name = (request.form.get("name") or "").strip() or None
+        name = (request.form.get("name") or "").strip()
+        if not name:
+            name = ""
         email = (request.form.get("email") or "").strip().lower()
         password = request.form.get("password") or ""
 
