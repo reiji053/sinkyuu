@@ -1067,6 +1067,13 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
 
+.settings-row--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
 .settings-row__left {
   display: flex;
   align-items: center;
@@ -1122,6 +1129,66 @@ body {
   font-weight: 800;
   color: rgb(211, 68, 68);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.logout-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.logout-modal.is-active {
+  display: flex;
+}
+
+.logout-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.logout-modal__dialog {
+  position: relative;
+  width: min(320px, 90vw);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 16px 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+
+.logout-modal__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.logout-modal__actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.logout-modal__btn {
+  min-width: 90px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logout-modal__btn--yes {
+  background: #6f86ff;
+}
+
+.logout-modal__btn--no {
+  background: #ff4b4b;
 }
 
 .settings-language {
