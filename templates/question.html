@@ -157,7 +157,7 @@
           });
 
           if (selectedId === correctId) {
-            resultText.textContent = "正解！";
+            resultText.textContent = "Correct！";
             resultBox.classList.add("correct");
             isCorrectInput.value = "1";
 
@@ -165,7 +165,7 @@
               questionImage.src = correctImageBase64;
             }
           } else {
-            resultText.textContent = "不正解！";
+            resultText.textContent = "Incorrect！";
             resultBox.classList.add("wrong");
             isCorrectInput.value = "0";
 
