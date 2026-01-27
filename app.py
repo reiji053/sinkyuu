@@ -1294,6 +1294,8 @@ def settings_privacy():
 def question():
     user_id = session.get("user_id")
     if not user_id:
+
+        #test
         return redirect("/signin")
     # クイズ出題のメイン。
     # セッションに「出題済みID」「回答数」「正答数」を持ち、DBには統計だけ反映する。
