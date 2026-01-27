@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Achievement</title>
-    <link rel="stylesheet" href="/static/styles.css?v=2" />
+    <link rel="stylesheet" href="/static/styles.css?v=4" />
   </head>
 
   <body>
@@ -23,8 +23,10 @@
               {% if a.description %}
                 <span class="profile-badge-desc">{{ a.description }}</span>
               {% endif %}
-              {% if not a.earned %}
-                <span class="achievement-card__status">未獲得</span>
+              {% if a.earned %}
+                <span class="achievement-card__status is-earned">獲得済み</span>
+              {% else %}
+                <span class="achievement-card__status is-locked">未獲得</span>
               {% endif %}
             </div>
 

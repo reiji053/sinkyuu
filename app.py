@@ -321,9 +321,10 @@ def init_db():
     conn.close()
 
 # import時にテーブル作成/補完まで済ませておく（ローカル開発向け）
-if database_url():
+# 本番環境で毎回DDLを流すと遅延/ロック/負荷の原因になるため実行しない。
+if database_url() and not IS_PRODUCTION:
     init_db()
-else:
+elif not database_url():
     print("[WARN] DATABASE_URL が未設定のため DB 初期化をスキップします")
 
 
@@ -1401,44 +1402,59 @@ def question():
         return cur.fetchone()
 
     conn = get_db_connection()
-    with conn.cursor(cursor_factory=RealDictCursor) as cur:
-        # =========================
-        # 残り問題チェック（まずは難易度込みで探す）
-        # =========================
-        question = _fetch_next_question(cur, strict_difficulty=True)
+    try:
+        with conn.cursor(cursor_factory=RealDictCursor) as cur:
+            # =========================
+            # 残り問題チェック（まずは難易度込みで探す）
+            # =========================
+            question = _fetch_next_question(cur, strict_difficulty=True)
 
-        # 初回から0件になる場合は、難易度条件がDBとズレている可能性が高いので救済
-        if not question and session.get("question_count", 0) == 0:
-            question = _fetch_next_question(cur, strict_difficulty=False)
+            # 初回から0件になる場合は、難易度条件がDBとズレている可能性が高いので救済
+            if not question and session.get("question_count", 0) == 0:
+                question = _fetch_next_question(cur, strict_difficulty=False)
 
-        if not question:
-            total = session.get("question_count", 0)
-            correct = session.get("correct_count", 0)
+            if not question:
+                total = session.get("question_count", 0)
+                correct = session.get("correct_count", 0)
 
-            uid = session.get("user_id")
-            if uid and total > 0 and not session.get("quiz_completion_recorded"):
-                _record_quiz_completed(user_id=int(uid), genre=genre_en)
-                session["quiz_completion_recorded"] = True
+                uid = session.get("user_id")
+                if uid and total > 0 and not session.get("quiz_completion_recorded"):
+                    _record_quiz_completed(user_id=int(uid), genre=genre_en)
+                    session["quiz_completion_recorded"] = True
 
-            #session.clear()
+                #session.clear()
 
-            return render_template(
-                "question.html",
-                finished=True,
-                total=total,
-                correct=correct,
-                genre=genre_en,
-                level=level
-            )
+                return render_template(
+                    "question.html",
+                    finished=True,
+                    total=total,
+                    correct=correct,
+                    genre=genre_en,
+                    level=level
+                )
 
-        # 選択肢
-        cur.execute("""
-            SELECT id, choice_text, is_correct
-            FROM quiz_choices
-            WHERE question_id = %s
-            ORDER BY id
-        """, (question["id"],))
-        choices = cur.fetchall()
+            # 選択肢
+            cur.execute("""
+                SELECT id, choice_text, is_correct
+                FROM quiz_choices
+                WHERE question_id = %s
+                ORDER BY id
+            """, (question["id"],))
+            choices = cur.fetchall()
+
+            # 正解・不正解用画像（base64）
+            correct_image = None
+            wrong_image = None
+            cur.execute("SELECT image_url FROM images WHERE id = 2")
+            row = cur.fetchone()
+            if row:
+                correct_image = row["image_url"]
+            cur.execute("SELECT image_url FROM images WHERE id = 3")
+            row = cur.fetchone()
+            if row:
+                wrong_image = row["image_url"]
+    finally:
+        conn.close()
 
     # choicesの中に正解が1つある前提（DBデータが壊れていると例外になる）
     correct_choice_id = next(c["id"] for c in choices if c["is_correct"])
@@ -1453,24 +1469,6 @@ def question():
             .replace(" ", "")
         )
 
-        # 正解・不正解用画像（base64）
-        correct_image = None
-        wrong_image = None
-
-        cur2 = None
-        conn2 = get_db_connection()
-        try:
-            cur2 = conn2.cursor()
-            cur2.execute("SELECT image_url FROM images WHERE id = 2")
-            correct_image = cur2.fetchone()[0]
-
-            cur2.execute("SELECT image_url FROM images WHERE id = 3")
-            wrong_image = cur2.fetchone()[0]
-        finally:
-            if cur2:
-                cur2.close()
-            conn2.close()
-
 
     return render_template(
         "question.html",
@@ -1481,7 +1479,6 @@ def question():
             "question_text": question["question_text"],
             "correct_choice_id": correct_choice_id,
             "explanation": question["explanation"],
-            "image_url": question["image_url"],
             "image_url": image_url,
         },
         choices=choices,
