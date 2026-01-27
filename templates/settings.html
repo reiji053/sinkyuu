@@ -118,7 +118,10 @@
         </a>
       </div>
 
-      <a class="settings-logout" href="/logout">Logout</a>
+      <form method="post" action="/logout">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
+        <button class="settings-logout" type="submit">Logout</button>
+      </form>
     </div>
 
     {% include "_bottom_nav.html" %}
